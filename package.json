@@ -1,0 +1,20 @@
+{
+  "name": "backend_tutorial_freecodecamp",
+  "version": "1.0.0",
+  "description": "A backend tutorial ",
+  "homepage": "https://github.com/FonsahPageo/backend_tutorial_freecodecamp#readme",
+  "bugs": {
+    "url": "https://github.com/FonsahPageo/backend_tutorial_freecodecamp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FonsahPageo/backend_tutorial_freecodecamp.git"
+  },
+  "license": "ISC",
+  "author": "FonsahPageo",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
