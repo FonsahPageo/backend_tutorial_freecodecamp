@@ -1,3 +1,4 @@
+import req from "express/lib/request.js";
 import { Post } from "../models/post.model.js";
 
 // create a post
@@ -43,7 +44,7 @@ const getPosts = async (req, res) => {
   }
 };
 
-const updatePosts = async (req, res) => {
+const updatePost = async (req, res) => {
   try {
     // basic validation to check if body is empty
     if (Object.keys(req.body).length === 0) {
@@ -64,13 +65,33 @@ const updatePosts = async (req, res) => {
 
     return res.status(200).json({
       message: "Post updated successfully",
-      post
-    })
+      post,
+    });
   } catch (error) {
     return res.status(500).json({
-      message: "Internal server error"
-    })
+      message: "Internal server error",
+    });
   }
 };
 
-export { createPost, getPosts, updatePosts };
+const deletePost = async (req, res) => {
+  try {
+    const post = await Post.findByIdAndDelete(req.params.id);
+
+    if (!post) {
+      return res.status(404).json({
+        message: "Post not found",
+      });
+    }
+
+    return res.status(200).json({
+      message: "Post deleted successfully"
+    });
+  } catch (error) {
+    return res.status(500).json({
+      messsage: "Internal server error",
+    });
+  }
+};
+
+export { createPost, getPosts, updatePost, deletePost };
