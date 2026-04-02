@@ -21,13 +21,29 @@ const createPost = async (req, res) => {
       message: "Post created successfully",
     });
   } catch (error) {
-    return res.sstatus(500).json({
+    return res.status(500).json({
       message: "Internal server error",
       error: error.message,
     });
   }
 };
 
+// get all posts
+const getPosts = async (req, res) => {
+  try {
+    const posts = await Post.find();
+    return res.status(200).json({
+      message: "Posts retrieved successfully",
+      posts
+    })
+  } catch (error) {
+    return res.status(500).json({
+      message: "Internal server error"
+    })
+  }
+}
+
 export {
-    createPost
+    createPost,
+    getPosts
 };
